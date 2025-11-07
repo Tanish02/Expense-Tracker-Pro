@@ -1,4 +1,4 @@
-const expenserReducer = (state, action) => {
+const expenseReducer = (state, action) => {
   switch (action.type) {
     case "ADD_EXPENSE":
       return [...state, action.payload];
@@ -19,6 +19,6 @@ const expenserReducer = (state, action) => {
   }
 };
 
-export { expenserReducer };
+export { expenseReducer };
 
 // End code
