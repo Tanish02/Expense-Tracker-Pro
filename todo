@@ -1,0 +1,5 @@
+Add an Edit button to update expenses.
+Show category-wise total (Food: ₹X, Travel: ₹Y).
+Add a simple chart (using Chart.js) for visualization.
+Add Dark/Light mode using Context.
+Export all expenses to a CSV file
