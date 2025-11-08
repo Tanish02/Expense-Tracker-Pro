@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { ExpenseContext } from "../context/ExpenseContext";
 
 function ExpenseForm() {
   const { addExpense } = useContext(ExpenseContext);
@@ -21,35 +22,31 @@ function ExpenseForm() {
     addExpense(newExpense);
     setTitle("");
     setAmount("");
-};
+  };
 
-return (
-  <form className="expense-form" onSubmit={handleSubmit}>
-    <input
-      type="text"
-      placeholder="Expense title..."
-      value={title}
-      onChange={(e) => setTitle(e,EventTarget.value)}
-    />
-    <input
-      type="number"
-      placeholder="Amount"
-      value={ amount }
-      onChange={(e) => setAmount(e.target.value)}
-    />
-    <select value={category} onChange={(e) => setCategory(e.target.value)}>
-      <option>Food</option>
-      <option>Travel</option>
-      <option>Shopping</option>
-      <option>Other</option>
-    
-    </select> 
-    <button type="submit">
-      Add
-    </button>
-  </form>
-);
-
+  return (
+    <form className="expense-form" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        placeholder="Expense title..."
+        value={title}
+        onChange={(e) => setTitle(e.target.value)}
+      />
+      <input
+        type="number"
+        placeholder="Amount"
+        value={amount}
+        onChange={(e) => setAmount(e.target.value)}
+      />
+      <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <option>Food</option>
+        <option>Travel</option>
+        <option>Shopping</option>
+        <option>Other</option>
+      </select>
+      <button type="submit">Add</button>
+    </form>
+  );
 }
 
 export default ExpenseForm;

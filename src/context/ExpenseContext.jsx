@@ -3,7 +3,7 @@ import { expenseReducer } from "../reducers/expenseReducer";
 
 const ExpenseContext = createContext();
 
-const ExpenseProvider = ({ Children }) => {
+const ExpenseProvider = ({ children }) => {
   const [expenses, dispatch] = useReducer(expenseReducer, [], () => {
     const saved = localStorage.getItem("expenses");
     return saved ? JSON.parse(saved) : [];
@@ -13,7 +13,7 @@ const ExpenseProvider = ({ Children }) => {
     localStorage.setItem("expenses", JSON.stringify(expenses));
   }, [expenses]);
 
-  const addExpenses = (expense) =>
+  const addExpense = (expense) =>
     dispatch({ type: "ADD_EXPENSE", payload: expense });
   const deleteExpense = (id) =>
     dispatch({ type: "DELETE_EXPENSE", payload: id });
@@ -22,9 +22,9 @@ const ExpenseProvider = ({ Children }) => {
 
   return (
     <ExpenseContext.Provider
-      value={{ expenses, addExpenses, deleteExpense, updateExpense }}
+      value={{ expenses, addExpense, deleteExpense, updateExpense }}
     >
-      {Children}
+      {children}
     </ExpenseContext.Provider>
   );
 };
